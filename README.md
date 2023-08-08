@@ -6,3 +6,5 @@
 **Box_Plot_Genera_Abundance.R:** This script is used to plot box-plots based on the relative abundance information of microbial genera identified in a dataset. Sample-names will be in rows and genera will be columns of the input file. The last column named "Status" contain grouping information
 
 **Stacked_BarPlot_Genus_Abundance.R:**  First part of this script is used to plot stacked bar-plots based on the relative abundance information of microbial genera identified in a dataset. Second part of this script will plot the stacked bar-plot by calculating the average relative abundance of genera in each group of sample.
+
+**Relative_Abundance.R**
