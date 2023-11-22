@@ -5,14 +5,6 @@ The analysis involved sequencing data from 142 human participants, 207 mouse sam
 ), and then proceeded to remove the adapters. Analysis of the human and mouse-derived 16S amplicon sequences was performed using the QIIME21 (version 2021.4) pipeline and R (version 4.1.3) in R Studio (RStudio Team, version 2022.07.2). Sequences were then clustered into ASVs using the SILVA2 classifier (version 138). DADA23 was employed to generate the feature table, which comprises ASV-IDs along with the corresponding count of detected ASVs in each sample. 9,974 ASVs were detected in this analysis. Low-abundance ASVs were excluded based on the criterion that an ASV should be present in a minimum of two samples with a total ASV count of less than 10. 3,115 ASVs remained after this criterion. On average 23,900 ASVs were detected per samples (median =13,183).
 
 ### ASV data generated from QIIME2 analysis
-**SampleWise_ASV_Summary.xlsx:** Samplewise summary of ASV table contaning total number of ASVs detected per sample and the number of distint ASVs detected per sample
-
-**ASV_ID_Summary.xlsx:** Number of sample each ASVs present and total number of ASVs detected in all samples
-
-**feature-table.tsv:** The ASV-count table created by QIIME2 analysis. This contain 349 samples and 9,974 ASVs
-
-**selected-feature-table.tsv** 
-
 
 ### Scripts used for Analysis
 **Pairwise_Wilcox_Test.R:** This script is used to carry out pairwise Wilcoxon test in genus abundance data from visit-1 and visit-3.
