@@ -9,6 +9,10 @@ The analysis involved sequencing data from 142 human participants, 207 mouse sam
 
 **ASV_ID_Summary.xlsx:** Number of sample each ASVs present and total number of ASVs detected in all samples
 
+**feature-table.tsv:** The ASV-count table created by QIIME2 analysis. This contain 349 samples and 9,974 ASVs
+
+**selected-feature-table.tsv** 
+
 
 ### Scripts used for Analysis
 **Pairwise_Wilcox_Test.R:** This script is used to carry out pairwise Wilcoxon test in genus abundance data from visit-1 and visit-3.
