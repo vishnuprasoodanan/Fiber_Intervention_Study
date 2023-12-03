@@ -1,4 +1,6 @@
 #Script for generating CLR-transformed abundance values from Genus (or Phylum) abundance/count table
+library("microViz")
+library("microbiome")
 
 #"FMT_Genus_count_table.txt" contain the number of ASVs assigned to each genera/phylum
 otu_table_in <- read.csv("FMT_Genus_count_table.txt", sep = "\t", row.names = 1)
