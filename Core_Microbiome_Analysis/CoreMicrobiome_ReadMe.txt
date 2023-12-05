@@ -4,3 +4,5 @@ Core microbiomes are typically quantified using one of three methods:
 3) some combination of the two (Neu et al., 2021). 
 I tried to define core microbiome (at genus level) based on presence of genera in 25%, 50%, 75% and 80% of samples in each group (i.e., humans-V1, huamns-V3 and mice).
 The figures titled Core_microbiome_25.pdf, Core_microbiome_50.pdf, and Core_microbiome_80.pdf offer a comprehensive visual comparison of the core microbiome overlap. This comparison specifically involves human samples from two distinct visits—visit-1 and visit-3—alongside the mice that received FMT from those respective human samples. These figures illustrate the extent of overlap, presenting the similarities and differences in the core microbiome at different thresholds (25%, 50%, 75% and 80%) between the mentioned human samples and the recipient mice following FMT.
+
+Similarly, the core microbiome delineated within the mice samples engaged in the Citrobacter experiment was compared with the corresponding human donor samples. This comparative visualization is delineated in the document titled CoreMicrobiome_Citro_Human_30052023_V2.pdf.
