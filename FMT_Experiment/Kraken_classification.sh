@@ -1,3 +1,4 @@
+#Analysis using 16S Greengenes database provided by Kraken2
 for R1 in *_R1.fastq;
 do
     # We cut the sample name on the first _ and store it in $sample 
@@ -11,7 +12,7 @@ do
      kraken2 --threads 16 --db ../KRAKEN2_DATABASES/16S_Greengenes_k2db --report "${sample}_kraken.rpt" --paired "$R1" "$R2" > "${sample}_kraken.tsv"
 done
 
-
+#Analysis using 16S SILVA database provided by Kraken2
 for R1 in *_R1.fastq;
 do
     # We cut the sample name on the first _ and store it in $sample 
