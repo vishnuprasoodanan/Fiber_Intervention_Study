@@ -102,11 +102,11 @@ for (i in 1:length(covar_upd)) {
   dev.off ()
   #---------------------------PCoA Analysis
   
-  Bushman2  = transform_sample_counts(ps, function(x) x / sum(x) )
+  otu_rel_ab  = transform_sample_counts(ps, function(x) x / sum(x) )
   
   #---------------------- weighted UniFrac PCoA
   file_name3 <- paste(element, "W-UniFrac_distances.txt", sep = "_")
-  UniFrac_distances <- UniFrac(Bushman2, weighted=TRUE)
+  UniFrac_distances <- UniFrac(otu_rel_ab, weighted=TRUE)
   UniFrac_distances <- as.matrix(UniFrac_distances)
   UniFrac_dist_column <- melt(UniFrac_distances)
   write.table (UniFrac_dist_column, file = file_name3, sep = "\t")
@@ -117,18 +117,18 @@ for (i in 1:length(covar_upd)) {
   pc <- c(1,2)
   file_name4 <- paste(element, "W-Unifrac_PCOA.jpg", sep = "_")
   jpeg(file_name4, height = 10, width = 10, units = 'in', res = 600)
-  plot(Uni_pcoa$vectors[,1:2], bg= Colors1[as.factor(Bushman2@sam_data[[element]])], pch=21, cex=2, xlab=paste0("PCoA", pc[1], " (", mds.var.per[1], "%)"), ylab=paste0("PCoA", pc[2], " (", mds.var.per[2], "%)"))
-  text(Uni_pcoa$vectors[,1:2], labels=rownames(Bushman2@sam_data), cex=0.3, font=1, pos=1)
-  ordiellipse(Uni_pcoa$vectors[,1:2], Bushman2@sam_data[[element]], kind="sd", lwd=1, lty=3, draw = "polygon", alpha = 50, col = Colors1)
-  #ordispider(Uni_pcoa$vectors[,1:2], Bushman2@sam_data[[element]], lty=3, spider ="centroid", lwd=1, col="black")
-  legend("bottomleft", legend = sort(unique(as.factor(Bushman2@sam_data[[element]]))), col = Colors1,lty = c(1,1,1,1), cex=0.7, title = "", border = "white", fill = NULL, bg="white", bty = "n")
+  plot(Uni_pcoa$vectors[,1:2], bg= Colors1[as.factor(otu_rel_ab@sam_data[[element]])], pch=21, cex=2, xlab=paste0("PCoA", pc[1], " (", mds.var.per[1], "%)"), ylab=paste0("PCoA", pc[2], " (", mds.var.per[2], "%)"))
+  text(Uni_pcoa$vectors[,1:2], labels=rownames(otu_rel_ab@sam_data), cex=0.3, font=1, pos=1)
+  ordiellipse(Uni_pcoa$vectors[,1:2], otu_rel_ab@sam_data[[element]], kind="sd", lwd=1, lty=3, draw = "polygon", alpha = 50, col = Colors1)
+  #ordispider(Uni_pcoa$vectors[,1:2], otu_rel_ab@sam_data[[element]], lty=3, spider ="centroid", lwd=1, col="black")
+  legend("bottomleft", legend = sort(unique(as.factor(otu_rel_ab@sam_data[[element]]))), col = Colors1,lty = c(1,1,1,1), cex=0.7, title = "", border = "white", fill = NULL, bg="white", bty = "n")
   abline(h=0, v=0, col = "gray60")
   dev.off ()
-  #adonis2(UniFrac_distances ~ Bushman2@sam_data[[element]])
+  #adonis2(UniFrac_distances ~ otu_rel_ab@sam_data[[element]])
   
   #--------------------- unweighted UniFrac PCoA
   
-  UWUniFrac_distances <- UniFrac(Bushman2, weighted=FALSE)
+  UWUniFrac_distances <- UniFrac(otu_rel_ab, weighted=FALSE)
   UWUniFrac_distances <- as.matrix(UWUniFrac_distances)
   UniFrac_dist_column <- melt(UWUniFrac_distances)
   file_name5 <- paste(element, "unweighted_UWUniFrac_distances.txt", sep = "_")
@@ -140,17 +140,17 @@ for (i in 1:length(covar_upd)) {
   
   file_name6 <- paste(element, "unweighted_UWUniFrac_distances.jpg", sep = "_")
   jpeg(file_name6, height = 10, width = 10, units = 'in', res = 600)
-  plot(Uni_pcoa$vectors[,1:2], bg= Colors1[as.factor(Bushman2@sam_data[[element]])], pch=21, cex=2, xlab=paste0("PCoA", pc[1], " (", mds.var.per[1], "%)"), ylab=paste0("PCoA", pc[2], " (", mds.var.per[2], "%)"))
-  text(Uni_pcoa$vectors[,1:2], labels=rownames(Bushman2@sam_data), cex=0.3, font=1, pos=1)
-  ordiellipse(Uni_pcoa$vectors[,1:2], Bushman2@sam_data[[element]], kind="sd", lwd=1, lty=3, draw = "polygon", alpha = 50, col = Colors1)
-  #ordispider(Uni_pcoa$vectors[,1:2], Bushman2@sam_data[[element]], lty=3, spider ="centroid", lwd=1, col="black")
-  legend("bottomleft", legend = sort(unique(as.factor(Bushman2@sam_data[[element]]))), col = Colors1,lty = c(1,1,1,1), cex=0.7, title = "", border = "white", fill = NULL, bg="white", bty = "n")
+  plot(Uni_pcoa$vectors[,1:2], bg= Colors1[as.factor(otu_rel_ab@sam_data[[element]])], pch=21, cex=2, xlab=paste0("PCoA", pc[1], " (", mds.var.per[1], "%)"), ylab=paste0("PCoA", pc[2], " (", mds.var.per[2], "%)"))
+  text(Uni_pcoa$vectors[,1:2], labels=rownames(otu_rel_ab@sam_data), cex=0.3, font=1, pos=1)
+  ordiellipse(Uni_pcoa$vectors[,1:2], otu_rel_ab@sam_data[[element]], kind="sd", lwd=1, lty=3, draw = "polygon", alpha = 50, col = Colors1)
+  #ordispider(Uni_pcoa$vectors[,1:2], otu_rel_ab@sam_data[[element]], lty=3, spider ="centroid", lwd=1, col="black")
+  legend("bottomleft", legend = sort(unique(as.factor(otu_rel_ab@sam_data[[element]]))), col = Colors1,lty = c(1,1,1,1), cex=0.7, title = "", border = "white", fill = NULL, bg="white", bty = "n")
   abline(h=0, v=0, col = "gray60")
   dev.off ()
-  #adonis2(UWUniFrac_distances ~ Bushman2@sam_data$diet)
+  #adonis2(UWUniFrac_distances ~ otu_rel_ab@sam_data$diet)
   
   #-------------------------- Bray-Curtis PCoA
-  BC_distances <- distance(Bushman2, method="bray")
+  BC_distances <- distance(otu_rel_ab, method="bray")
   BC_distances <- as.matrix(BC_distances)
   UniFrac_dist_column <- melt(BC_distances)
   
@@ -163,12 +163,12 @@ for (i in 1:length(covar_upd)) {
   
   file_name8 <- paste(element, "BC_distances.jpg", sep = "_")
   jpeg(file_name8, height = 10, width = 10, units = 'in', res = 600)
-  plot(Uni_pcoa$vectors[,1:2], bg= Colors1[as.factor(Bushman2@sam_data[[element]])], pch=21, cex=2, xlab=paste0("PCoA", pc[1], " (", mds.var.per[1], "%)"), ylab=paste0("PCoA", pc[2], " (", mds.var.per[2], "%)"))
-  text(Uni_pcoa$vectors[,1:2], labels=rownames(Bushman2@sam_data), cex=0.3, font=1, pos=1)
-  ordiellipse(Uni_pcoa$vectors[,1:2], Bushman2@sam_data[[element]], kind="sd", lwd=1, lty=3, draw = "polygon", alpha = 50, col = Colors1)
-  #ordispider(Uni_pcoa$vectors[,1:2], Bushman2@sam_data[[element]], lty=3, spider ="centroid", lwd=1, col="black")
-  legend("topleft", legend = sort(unique(as.factor(Bushman2@sam_data[[element]]))), col = Colors1,lty = c(1,1,1,1), cex=0.7, title = "", border = "white", fill = NULL, bg="white", bty = "n")
+  plot(Uni_pcoa$vectors[,1:2], bg= Colors1[as.factor(otu_rel_ab@sam_data[[element]])], pch=21, cex=2, xlab=paste0("PCoA", pc[1], " (", mds.var.per[1], "%)"), ylab=paste0("PCoA", pc[2], " (", mds.var.per[2], "%)"))
+  text(Uni_pcoa$vectors[,1:2], labels=rownames(otu_rel_ab@sam_data), cex=0.3, font=1, pos=1)
+  ordiellipse(Uni_pcoa$vectors[,1:2], otu_rel_ab@sam_data[[element]], kind="sd", lwd=1, lty=3, draw = "polygon", alpha = 50, col = Colors1)
+  #ordispider(Uni_pcoa$vectors[,1:2], otu_rel_ab@sam_data[[element]], lty=3, spider ="centroid", lwd=1, col="black")
+  legend("topleft", legend = sort(unique(as.factor(otu_rel_ab@sam_data[[element]]))), col = Colors1,lty = c(1,1,1,1), cex=0.7, title = "", border = "white", fill = NULL, bg="white", bty = "n")
   abline(h=0, v=0, col = "gray60")
   dev.off ()
-  #adonis2(BC_distances ~ Bushman2@sam_data$diet)
+  #adonis2(BC_distances ~ otu_rel_ab@sam_data$diet)
 }
