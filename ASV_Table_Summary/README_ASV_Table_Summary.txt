@@ -14,4 +14,4 @@ run_fastqc.sh: Bash command to evaluate quality stats of the raw reads
 	
 run_repair.sh: Identify the paired end reads and exclude the single-end reads remained after quality filtration
 	
-selected-feature-table_05122023.tsv: 
+selected-feature-table_05122023.tsv: The selected ASV-count table after exclusion of low abundant ASVs. This contain 349 samples and 3116 ASVs
