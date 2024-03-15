@@ -26,14 +26,6 @@ otu_table_filtered_data <- otu_table_in[, !(colnames(otu_table_in) %in% selected
 # Exclude rows with row sum equal to zero
 otu_table_filtered_data_final <- otu_table_filtered_data[rowSums(otu_table_filtered_data) != 0, ]
 
-#OTU_table <- read.table(file = "selected_feature-table.txt", sep = "\t", header = T, row.names = 1) #ASV-IDs in rows and Samples in columns
-#OTU_table <- as.data.frame(t(otu_table_filtered_data_final)) #Samples in rows and ASV-IDs in columns
-# <- Rarefy(OTU_table, depth = min(rowSums(OTU_table)))$otu.tab.rff # Samples in Row and OTUs in column
-#OTU_table_rar <- data.frame(otu.tab.rff)
-
-#write.table(OTU_table_rar, file = "Selected_FeatureTable_rarefied.txt", quote = FALSE, sep = '\t')
-#OTU_table_rar_final <- as.data.frame(t(OTU_table_rar))
-
 total_asv <- colSums(otu_table_filtered_data_final)
 range (total_asv)
 sd (total_asv)
