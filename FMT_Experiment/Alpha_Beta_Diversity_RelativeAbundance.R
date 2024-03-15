@@ -76,7 +76,7 @@ abline(h=0, v=0, col = "gray60")
 dev.off ()
 adonis2(UniFrac_distances ~ otu_rel_ab@sam_data$status)
 
-#------------ unweighted UniFrac PCoA
+#------------ unweighted UniFrac PCoA and Bray-Curtis distance calculations
 #calculate unweighted unifrac distance
 #UniFrac_distances <- UniFrac(otu_rel_ab, weighted=FALSE)
 
