@@ -29,6 +29,7 @@ ps <- phyloseq(OTU, TAX, META)
 
 genus_clr <- tax_transform(ps, trans = "clr", rank = "Taxon")
 
+#provide number of genera present in your data
 max_taxa <- 100
 best_taxa <- names(sort(taxa_sums(genus_clr@otu_table), decreasing=TRUE)[1:max_taxa])
 
