@@ -15,39 +15,12 @@ tse <- as(se, "TreeSummarizedExperiment")
 tse <- transformAssay(se, method = "clr", pseudocount = 1)
 clr_assay <- assays(tse)$clr
 clr_assay <- t(clr_assay)
-
-# Calculates Euclidean distances between samples. Because taxa is in columns,
-# it is used to compare different samples.
 euclidean_dist <- vegan::vegdist(clr_assay, method = "euclidean")
+euclidean_distances <- as.matrix(euclidean_dist)
+euclidean_dist_column <- melt(euclidean_distances)
+write.table (UniFrac_dist_column, file = "euclidean_distances.txt", sep = "\t")
 
-# Does principal coordinate analysis
-# euclidean_pcoa <- ecodist::pco(euclidean_dist)
-# 
-#  # Creates a data frame from principal coordinates
-#  euclidean_pcoa_df <- data.frame(pcoa1 = euclidean_pcoa$vectors[,1],
-#                                  pcoa2 = euclidean_pcoa$vectors[,2])
-# 
-#  euclidean_patient_status_pcoa_df <- cbind(euclidean_pcoa_df,
-#                                            patient_status = colData(tse)$Status)
-# 
-#  # Creates a plot
-#  euclidean_patient_status_plot <- ggplot(data = euclidean_patient_status_pcoa_df,
-#                                          aes(x=pcoa1, y=pcoa2,
-#                                              color = patient_status)) +
-#    geom_point() +
-#    labs(x = "PC1",
-#         y = "PC2",
-#         title = "PCoA with Aitchison distances") +
-#    theme(title = element_text(size = 12)) # makes titles smaller
-# 
-#  euclidean_patient_status_plot
-
-#UniFrac_distances <- UniFrac(Bushman2, weighted=TRUE)
-UniFrac_distances <- as.matrix(euclidean_dist)
-UniFrac_dist_column <- melt(UniFrac_distances)
-write.table (UniFrac_dist_column, file = "UniFrac_distances.txt", sep = "\t")
-
-Uni_pcoa <- pcoa(UniFrac_distances)
+Uni_pcoa <- pcoa(euclidean_distances)
 Uni_pcoa$values[1:2,]
 mds.var.per = round(Uni_pcoa$values$Eigenvalues/sum(Uni_pcoa$values$Eigenvalues)*100, 1)
 pc <- c(1,2)
