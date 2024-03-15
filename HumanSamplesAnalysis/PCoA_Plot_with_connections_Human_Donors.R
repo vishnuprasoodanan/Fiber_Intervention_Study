@@ -1,4 +1,4 @@
-#
+#This script was utilized to generate Figure 1A (PCoA), Figure 2A, Figure 3H, Supplementary Figure 1C, and Supplementary Figure 1D. It incorporates minor adjustments in input data and connects samples using lines as per the selected analysis criteria
 
 library(phyloseq)
 library (ape)
