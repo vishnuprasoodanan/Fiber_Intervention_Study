@@ -16,7 +16,7 @@ Assessed the data patterns across diverse groups utilizing various normalization
 This section encompasses the criteria utilized for identifying the core microbiome in human samples and in mice that received FMT from human samples, including those associated with the C. rodentium experiment.
 
 ### Centered log-ratio transformation (clr) analysis (directory: CLR-TRANSORMATION_ANALYSIS)
-This section include the scripts employed for performing CLR-transformation on genus and phylum abundance data, subsequently visualizing the transformed values.
+This section include the scripts employed for performing CLR-transformation on genus and phylum abundance data, subsequently visualizing the transformed values. Analysis using clr-transformed data was conducted for the mice that received FMT and dietary interventions. This was done to verify if the patterns observed using relative abundance still hold true after clr-transformation
 
 ### Other Scripts used for Analysis
 **Pairwise_Wilcox_Test.R:** This script is used to carry out pairwise Wilcoxon test in genus abundance data from visit-1 and visit-3.
